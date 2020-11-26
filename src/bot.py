@@ -1,6 +1,7 @@
 from discord import Client
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 def init_driver() -> webdriver:
@@ -10,7 +11,7 @@ def init_driver() -> webdriver:
     options.headless = True
 
     # Initialize driver to click button to activate widget.
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(ChromeDriverManager().install())
 
     return driver
 
