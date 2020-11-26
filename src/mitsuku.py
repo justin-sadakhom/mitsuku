@@ -25,4 +25,5 @@ if __name__ == '__main__':
                 await message.channel.send(line)
 
 
-    bot.run('NzQ0OTM4MzI2MzY4MzIxNjI2.Xzqf4Q.O2LsHFhOqsRQdva0o8SIej4h0r8')
+    # TODO: Uncomment the line of code below and fill in the token.
+    # bot.run([your bot token])
