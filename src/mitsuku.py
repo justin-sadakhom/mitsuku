@@ -1,10 +1,10 @@
+from selenium.common.exceptions import WebDriverException
+
 from bot import Bot
 from commands import chat_command
 
 if __name__ == '__main__':
-
     bot = Bot()
-
 
     @bot.event
     async def on_message(message):
@@ -19,11 +19,15 @@ if __name__ == '__main__':
                 bot.chat_active = True
 
             dialogue = chat_command.clean_input(message.content)
-            output = chat_command.chat(dialogue, bot.driver, bot.chat_count)
 
-            for line in output:
-                await message.channel.send(line)
+            try:
+                output = chat_command.chat(dialogue, bot.driver, bot.chat_count)
 
+                for line in output:
+                    await message.channel.send(line)
+
+            except WebDriverException:
+                pass
 
     # TODO: Uncomment the line of code below and fill in the token.
     # bot.run([your bot token])
